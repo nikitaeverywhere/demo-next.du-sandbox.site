@@ -1,5 +1,7 @@
+import { plainSyncScript } from "@dataunlocker/script";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -16,6 +18,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script id="dataunlocker" strategy="beforeInteractive">
+          {plainSyncScript}
+        </Script>
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   );
